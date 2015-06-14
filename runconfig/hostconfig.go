@@ -196,39 +196,40 @@ func NewLxcConfig(values []KeyValuePair) *LxcConfig {
 }
 
 type HostConfig struct {
-	Binds           []string
-	ContainerIDFile string
-	LxcConf         *LxcConfig
-	Memory          int64 // Memory limit (in bytes)
-	MemorySwap      int64 // Total memory usage (memory + swap); set `-1` to disable swap
-	CpuShares       int64 // CPU shares (relative weight vs. other containers)
-	CpuPeriod       int64
-	CpusetCpus      string // CpusetCpus 0-2, 0,1
-	CpusetMems      string // CpusetMems 0-2, 0,1
-	CpuQuota        int64
-	BlkioWeight     int64 // Block IO weight (relative weight vs. other containers)
-	OomKillDisable  bool  // Whether to disable OOM Killer or not
-	Privileged      bool
-	PortBindings    nat.PortMap
-	Links           []string
-	PublishAllPorts bool
-	Dns             []string
-	DnsSearch       []string
-	ExtraHosts      []string
-	VolumesFrom     []string
-	Devices         []DeviceMapping
-	NetworkMode     NetworkMode
-	IpcMode         IpcMode
-	PidMode         PidMode
-	UTSMode         UTSMode
-	CapAdd          []string
-	CapDrop         []string
-	RestartPolicy   RestartPolicy
-	SecurityOpt     []string
-	ReadonlyRootfs  bool
-	Ulimits         []*ulimit.Ulimit
-	LogConfig       LogConfig
-	CgroupParent    string // Parent cgroup.
+	Binds            []string
+	ContainerIDFile  string
+	LxcConf          *LxcConfig
+	Memory           int64 // Memory limit (in bytes)
+	MemorySwap       int64 // Total memory usage (memory + swap); set `-1` to disable swap
+	CpuShares        int64 // CPU shares (relative weight vs. other containers)
+	CpuPeriod        int64
+	CpusetCpus       string // CpusetCpus 0-2, 0,1
+	CpusetMems       string // CpusetMems 0-2, 0,1
+	CpuQuota         int64
+	BlkioWeight      int64 // Block IO weight (relative weight vs. other containers)
+	OomKillDisable   bool  // Whether to disable OOM Killer or not
+	MemorySwappiness int64 // Tuning container memory swappiness behaviour
+	Privileged       bool
+	PortBindings     nat.PortMap
+	Links            []string
+	PublishAllPorts  bool
+	Dns              []string
+	DnsSearch        []string
+	ExtraHosts       []string
+	VolumesFrom      []string
+	Devices          []DeviceMapping
+	NetworkMode      NetworkMode
+	IpcMode          IpcMode
+	PidMode          PidMode
+	UTSMode          UTSMode
+	CapAdd           []string
+	CapDrop          []string
+	RestartPolicy    RestartPolicy
+	SecurityOpt      []string
+	ReadonlyRootfs   bool
+	Ulimits          []*ulimit.Ulimit
+	LogConfig        LogConfig
+	CgroupParent     string // Parent cgroup.
 }
 
 func MergeConfigs(config *Config, hostConfig *HostConfig) *ContainerConfigWrapper {
